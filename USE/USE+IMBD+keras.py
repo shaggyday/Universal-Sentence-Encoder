@@ -12,7 +12,7 @@ from keras import backend as K
 
 np.random.seed(10)
 # Get the data ready
-dataset = pd.read_csv('movie_reviews_processed.csv')
+dataset = pd.read_csv('movie_reviews_processed.csv.bz2', compression='bz2')
 dataset['sentiment'] = [1 if sentiment == 'positive' else 0 for sentiment in dataset['sentiment'].values]
 text = dataset['review'].values
 label = dataset['sentiment'].values

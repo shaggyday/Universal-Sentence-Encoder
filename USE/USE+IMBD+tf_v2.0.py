@@ -3,7 +3,7 @@ import tensorflow_hub as hub
 import numpy as np
 import pandas as pd
 
-dataset = pd.read_csv('movie_reviews_processed.csv')
+dataset = pd.read_csv('movie_reviews_processed.csv.bz2', compression='bz2')
 dataset['sentiment'] = [1 if sentiment == 'positive' else 0 for sentiment in dataset['sentiment'].values]
 reviews = dataset['review'].values
 sentiments = dataset['sentiment'].values
