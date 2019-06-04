@@ -13,8 +13,8 @@ import seaborn as sns
 import keras.layers as layers
 from keras.models import Model
 from keras import backend as K
-
 np.random.seed(10)
+
 # Get the data ready
 print('Decompressing data...')
 dataset = pd.read_csv('movie_reviews_review_level.csv.bz2', compression='bz2')
@@ -34,7 +34,6 @@ test_label = np.array(test_label)[:, np.newaxis]
 # Get USE ready
 module_url = "https://tfhub.dev/google/universal-sentence-encoder/2" 
 #@param ["https://tfhub.dev/google/universal-sentence-encoder/2", "https://tfhub.dev/google/universal-sentence-encoder-large/3"]
-# Import the Universal Sentence Encoder's TF Hub module
 embed = hub.Module(module_url)
 embed_size = embed.get_output_info_dict()['default'].get_shape()[1].value
 tf.logging.set_verbosity(tf.logging.ERROR)
@@ -55,9 +54,9 @@ model = Model(inputs=[input_text], outputs=pred)
 model.summary()
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
+# train'em
 epochs = 20
 batch_size = 64
-
 with tf.Session() as session:
   K.set_session(session)
   session.run(tf.global_variables_initializer())
@@ -78,7 +77,7 @@ plt.plot(epochs, val_loss, 'b', label='Validation loss')
 plt.plot(epochs, acc, 'bo', label='Training acc')
 plt.plot(epochs, val_acc, 'b', label='Validation acc')
 plt.title('model accuracy & loss')
-plt.ylabel('loss   accuracy')
+plt.ylabel('loss                        accuracy')
 plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper left')
 plt.savefig('USE+IMBD+keras_v1.2.plot.png', bbox_inches='tight')
