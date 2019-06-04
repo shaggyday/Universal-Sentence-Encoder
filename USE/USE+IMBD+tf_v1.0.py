@@ -2,7 +2,6 @@ import tensorflow as tf
 import tensorflow_hub as hub
 import numpy as np
 import pandas as pd
-from text_wrangling import pre_process_corpus
 
 dataset = pd.read_csv('movie_reviews.csv.bz2', compression='bz2')
 dataset['sentiment'] = [1 if sentiment == 'positive' else 0 for sentiment in dataset['sentiment'].values]
