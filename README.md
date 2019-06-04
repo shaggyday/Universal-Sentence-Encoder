@@ -11,6 +11,6 @@ June 3rd
             dropout (0.4)
             dense (1) - sigmoid
     Results:
-    !   [alt text](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/acc.png)
+    ![Screenshot]\(https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/acc.png)
         highest validation accuracy is 86.82%
         suffers from overfitting
