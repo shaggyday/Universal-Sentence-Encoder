@@ -1,3 +1,6 @@
+# Runs on IMBD reviews
+# v1.x: treats each reviews as an individual sentence
+
 import tensorflow as tf
 import tensorflow_hub as hub
 import matplotlib.pyplot as plt
@@ -12,7 +15,7 @@ from keras import backend as K
 
 np.random.seed(10)
 # Get the data ready
-dataset = pd.read_csv('movie_reviews_processed.csv.bz2', compression='bz2')
+dataset = pd.read_csv('movie_reviews_review_level.csv.bz2', compression='bz2')
 dataset['sentiment'] = [1 if sentiment == 'positive' else 0 for sentiment in dataset['sentiment'].values]
 text = dataset['review'].values
 label = dataset['sentiment'].values
