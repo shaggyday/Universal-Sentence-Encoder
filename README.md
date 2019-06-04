@@ -1,7 +1,6 @@
 # Universal-Sentence-Encoder
-
-## 06/04/2019
-* Goal: apply USE to DNN using keras. Run on IMBD raw data. **Treats an entire review as an individual sentence**.
+Goal: apply USE to DNN using keras. Run on IMBD raw data. **Treats an entire review as an individual sentence**.
+## v1.1 
 * [Model](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras_v1.1.py):
   * USE lambda layer
   * ~~dense (512) - relu~~
@@ -18,7 +17,7 @@
   * **still** suffers from overfitting\
   ![Plot](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras_v1.1_plot.png)
 
-## 06/03/2019
+## v1.0
 * Goal: apply USE to deep neural network that uses keras (instead of tf.estimator). Run on IMBD raw data. Treats an entire review as **an individual sentence**.
 * [Model](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras_v1.0.py):
   * USE lambda layer
