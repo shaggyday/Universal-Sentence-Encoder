@@ -12,7 +12,7 @@ Goal: apply USE to DNN using keras. Run on IMBD raw data. **Treats an entire rev
 * [Results](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras_v1.2_results.pdf):
   * ~~highest validation accuracy is 86.94%~~
   * **highest validation accuracy is 87.18%**
-  * **still** suffers from overfitting\
+  * **less** overfitting than before because of weaker model ...\
   ![Plot](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras_v1.2.plot.png)
   
 ## v1.1 
