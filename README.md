@@ -3,14 +3,14 @@
 
 June 3rd
 * Goal: apply USE to deep neural network that uses keras (instead of tf.estimator)
-* Model:
+* [Model](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras_v1.0.py):
   * USE lambda layer
   * dense (512) - relu
   * dropout (0.4)
   * dense (128) - relu
   * dropout (0.4)
   * dense (1) - sigmoid
-* Results:
+* [Results](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras%20v_1.0%20results.pdf):
   * highest validation accuracy is 86.82%
   * suffers from overfitting\
   ![Accuracy](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/acc.png)
