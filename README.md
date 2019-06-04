@@ -1,5 +1,19 @@
 # Universal-Sentence-Encoder
 Goal: apply USE to DNN using keras. Run on IMBD raw data. **Treats an entire review as an individual sentence**.
+## v1.4
+* [Model](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras_v1.4.py):
+  * USE lambda layer
+  * dense (128) - relu
+  * dropout (0.4)
+  * dense (1) - sigmoid
+  * ~~epochs = 20, batch_size = 64~~
+  * **epochs = 20, batch_size = 32**
+* [Results](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras_v1.4_results.pdf):
+  * ~~highest validation accuracy is 87.11%~~
+  * **highest validation accuracy is 87.16%**
+  * **less** overfitting and **higher** validation accuracy
+  ![Plot](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras_v1.4.plot.png)
+
 ## v1.3
 * [Model](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras_v1.3.py):
   * USE lambda layer
