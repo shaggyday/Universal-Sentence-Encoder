@@ -1,5 +1,14 @@
 # Universal-Sentence-Encoder
 Goal: apply USE to DNN using keras. Run on IMBD raw data. **Treats an entire review as an individual sentence**.
+## v1.4.1
+* [Pre embedded data](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/picklem.py) into [pickle files]
+* [Model](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras_v1.4.1.py)
+* [Results](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras_v1.4_results.pdf):
+  * ~~highest validation accuracy is 87.16%~~
+  * **highest validation accuracy is 87.12%**
+  ![Plot](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras_v1.4.1plot.png)
+* Approximately the same results and accuracy, but time decreased from 80s/epoch to **2s/epoch**
+  
 ## v1.4
 * [Model](https://github.com/shaggyday/Universal-Sentence-Encoder/blob/master/USE/USE%2BIMBD%2Bkeras_v1.4.py):
   * USE lambda layer
