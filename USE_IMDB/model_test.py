@@ -11,37 +11,37 @@ import seaborn as sns
 import sys
 import keras
 import keras.layers as layers
-from keras.models import Model
+from keras.models import Model, load_model
 from keras import backend as K
 from USE_dependencies import plotem, shuffle_df
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 np.random.seed(10)
 
 # Tune the hyperparamters here!!!
-epochs = 50
-batch_size = 50
+# epochs = 50
+# batch_size = 50
 neurons = 128
 dropout = 0.1
-plot_title = "out.png"
+# plot_title = "out.png"
 
 # Get the data ready
-file = sys.argv[1]
-df = pd.read_csv(file)
-df['sentiment'] = [1 if sentiment == 'positive' else 0 for sentiment in df['sentiment'].values]
-df = shuffle_df(df)
-text = df['review'].values
-labels = df['sentiment'].values
-num_sample = len(text)
-val_split = int(num_sample*0.8)
-train_text = np.array(text[:val_split])[:, np.newaxis]
-train_labels = np.array(labels[:val_split])[:, np.newaxis]
-val_text = np.array(text[val_split:])[:, np.newaxis]
-val_labels = np.array(labels[val_split:])[:, np.newaxis]
+# file = sys.argv[1]
+# df = pd.read_csv(file)
+# df['sentiment'] = [1 if sentiment == 'positive' else 0 for sentiment in df['sentiment'].values]
+# df = shuffle_df(df)
+# text = df['review'].values
+# labels = df['sentiment'].values
+# num_sample = len(text)
+# val_split = int(num_sample*0.8)
+# train_text = np.array(text[:val_split])[:, np.newaxis]
+# train_labels = np.array(labels[:val_split])[:, np.newaxis]
+# val_text = np.array(text[val_split:])[:, np.newaxis]
+# val_labels = np.array(labels[val_split:])[:, np.newaxis]
 
 # test on NOT augmented data
 test_df = pd.read_csv("IMDB.csv")
 test_df['sentiment'] = [1 if sentiment == 'positive' else 0 for sentiment in test_df['sentiment'].values]
-test_df = shuffle_df(test_df)
+# test_df = shuffle_df(test_df)
 test_text = test_df['review'].values
 test_labels = test_df['sentiment'].values
 test_text = np.array(test_text)[:, np.newaxis]
@@ -63,24 +63,30 @@ def UniversalEmbedding(x):
 input_text = layers.Input(shape=(1,), dtype=tf.string)
 embedding = layers.Lambda(UniversalEmbedding, output_shape=(embed_size,))(input_text)
 dense = layers.Dense(neurons, activation='relu')(embedding)
-dropout = layers.Dropout(dropout)(dense)
-pred = layers.Dense(1, activation='sigmoid')(dropout)
+# dropout = layers.Dropout(dropout)(dense)
+pred = layers.Dense(1, activation='sigmoid')(dense)
 model = Model(inputs=[input_text], outputs=pred)
+# load weights
+model.load_weights("the_weights.h5", by_name=True)
 model.summary()
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.compile(loss='binary_crossentropy', optimizer='adam')
 
 # train'em
 with tf.Session() as session:
 	K.set_session(session)
 	session.run(tf.global_variables_initializer())
 	session.run(tf.tables_initializer())
-	history = model.fit(train_text, train_labels,
-		validation_data=(val_text, val_labels),
-		epochs=epochs,
-		batch_size=batch_size)
-	score = model.evaluate(test_text, test_labels, verbose=1)
-	print("\nTest score:", score[0])
-	print('Test accuracy:', score[1])
-	model.save_weights("the_weights.h5")
+	# history = model.fit(train_text, train_labels,
+	# 	validation_data=(val_text, val_labels),
+	# 	epochs=epochs,
+	# 	batch_size=batch_size)
+	# score = model.evaluate(test_text, test_labels, verbose=1)
+	# print("\nTest score:", score[0])
+	# print('Test accuracy:', score[1])
+	# model.save_weights("the_weights.h5")
 	# plot'em
-	plotem(plot_title, history)
+	# plotem(plot_title, history)
+	# predictions = model.predict(test_text, verbose=1)
+	# print(np.argmax(predictions))
+# df_pred = pd.DataFrame(np.argmax(predictions))
+# df_pred.to_csv("out.csv")

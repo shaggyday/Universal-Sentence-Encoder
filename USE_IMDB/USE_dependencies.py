@@ -41,7 +41,7 @@ def plotem(title, history):
 
 def shuffle_arrays(text, labels):
 	# generate random indexs
-	idx = np.random.permutation(len(array))
+	idx = np.random.permutation(len(text))
 	text_shuffled = text[idx]
 	labels_shuffled = labels[idx]
 	return (text_shuffled, labels_shuffled)
